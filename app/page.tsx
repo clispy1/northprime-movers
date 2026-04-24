@@ -82,9 +82,9 @@ export default function HomePage() {
 
   // Testimonial Auto-play
   const testimonials = [
-    { name: "Sarah J.", role: "Moved to Burnaby", text: "NorthPrime Movers handled our recent move with incredible care. Since they are a newer company, they really went above and beyond to make sure everything was perfect. Highly recommended!" },
+    { name: "Sarah J.", role: "Moved to Burnaby", text: "NorthPrime Movers handled our recent move with incredible care. They really went above and beyond to make sure everything was perfect. Highly recommended!" },
     { name: "Mark T.", role: "Moved to Surrey", text: "Affordable, reliable, and on time. The truck was spotless and the crew was very professional. They took the stress completely out of moving day." },
-    { name: "Emily R.", role: "Moved within Vancouver", text: "I was nervous about hiring a new moving company, but they exceeded all expectations. No hidden fees, exactly as quoted. Great experience." }
+    { name: "Emily R.", role: "Moved within Vancouver", text: "I was nervous about hiring movers, but they exceeded all expectations. No hidden fees, exactly as quoted. Great experience." }
   ];
 
   useEffect(() => {
@@ -189,7 +189,7 @@ export default function HomePage() {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-2xl pt-10">
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 border border-blue-800 mb-6 backdrop-blur-sm">
               <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span className="text-blue-200 font-medium text-sm">Vancouver&apos;s Premium New Moving Service</span>
+              <span className="text-blue-200 font-medium text-sm">Vancouver&apos;s Premium Moving Service</span>
             </motion.div>
 
             <motion.h1 variants={fadeUp} className="font-heading text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
@@ -198,7 +198,7 @@ export default function HomePage() {
             </motion.h1>
 
             <motion.p variants={fadeUp} className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed font-light">
-              Brand new trucks, pristine equipment, and a team dedicated to earning your 5-star review.
+              Premium trucks, pristine equipment, and a team dedicated to earning your 5-star review.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
@@ -370,7 +370,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Realistic Trust Strip for New Company */}
+      {/* Realistic Trust Strip */}
       <div className="bg-white border-b border-gray-200 py-6 relative z-20 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-8 text-gray-600">
           <div className="flex items-center gap-2 font-bold text-lg"><ShieldCheck className="text-red-600"/> 100% Satisfaction Guarantee</div>
@@ -475,7 +475,7 @@ export default function HomePage() {
             {[
               { step: "1", title: "Request a Quote", desc: "Fill out our simple form or call us to get a free, no-obligation moving quote tailored to your specific needs.", align: "right" },
               { step: "2", title: "Schedule Your Move", desc: "Choose a date and time that works for you. We'll confirm the details and send you a preparation checklist.", align: "left" },
-              { step: "3", title: "We Handle Everything", desc: "Our pristine new trucks and professional crew arrive on time to pack, load, and move your belongings safely.", align: "right" }
+              { step: "3", title: "We Handle Everything", desc: "Our premium trucks and professional crew arrive on time to pack, load, and move your belongings safely.", align: "right" }
             ].map((item, i) => (
               <div key={i} className={`relative flex items-center justify-between md:justify-normal w-full mb-16 last:mb-0 ${item.align === 'left' ? 'md:flex-row-reverse' : ''}`}>
                 
@@ -500,7 +500,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Our Promise / Fleet Section (New Company Advantage) */}
+      {/* Our Promise / Fleet Section */}
       <section id="fleet" className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl border border-gray-100 overflow-hidden relative">
@@ -512,13 +512,13 @@ export default function HomePage() {
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 font-bold text-sm mb-6">
                   <Zap size={16} /> The NorthPrime Advantage
                 </div>
-                <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-blue-950">New Company.<br/>Pristine Equipment.</h2>
+                <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-blue-950">Premium Service.<br/>Pristine Equipment.</h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Being a new company means we don&apos;t rely on old, broken-down trucks or dirty moving pads. We&apos;ve invested in state-of-the-art equipment to ensure your belongings are treated with the utmost respect and care.
+                  We believe in doing things right, which means we never rely on old, broken-down trucks or dirty moving pads. We invest heavily in state-of-the-art equipment to ensure your belongings are treated with the utmost respect and care.
                 </p>
                 <ul className="space-y-4">
                   {[
-                    "Brand new, fully-equipped moving trucks",
+                    "Premium, fully-equipped moving trucks",
                     "Fresh, clean moving blankets for every job",
                     "Modern dollies and lifting straps",
                     "Highly motivated crew eager to earn your 5-star review"
@@ -531,7 +531,7 @@ export default function HomePage() {
                 </ul>
               </div>
               <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-xl">
-                <img src="https://storage.googleapis.com/aistudio-user-assets/sandybarret58%40gmail.com/1743070632313_truck.jpg" alt="New Moving Truck" className="w-full h-full object-cover" />
+                <img src="https://storage.googleapis.com/aistudio-user-assets/sandybarret58%40gmail.com/1743070632313_truck.jpg" alt="Premium Moving Truck" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent flex items-end p-8">
                   <p className="text-white font-bold text-xl">Our fleet is ready for your move.</p>
                 </div>
@@ -670,7 +670,7 @@ export default function HomePage() {
               </span>
             </div>
             <p className="text-blue-200/80 max-w-sm mb-6 leading-relaxed">
-              Vancouver&apos;s premier new moving service. Dedicated to providing stress-free, reliable, and transparent moving experiences across the Lower Mainland.
+              Vancouver&apos;s premier moving service. Dedicated to providing stress-free, reliable, and transparent moving experiences across the Lower Mainland.
             </p>
             <div className="flex gap-4">
               {/* Social placeholders */}
