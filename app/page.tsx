@@ -117,8 +117,17 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gray-50 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
       
+      {/* Top Discount Banner */}
+      <div className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-300 ${isScrolled ? '-translate-y-full' : 'translate-y-0'} bg-red-600 text-white text-center py-2 px-4 shadow-[0_2px_10px_rgba(220,38,38,0.4)]`}>
+        <div className="font-bold text-sm sm:text-base flex items-center justify-center gap-2 tracking-wide">
+          <Star size={16} className="fill-yellow-400 text-yellow-400" />
+          10% DISCOUNT FOR FIRST-TIME CUSTOMERS
+          <Star size={16} className="fill-yellow-400 text-yellow-400" />
+        </div>
+      </div>
+
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'}`}>
+      <nav className={`fixed left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'top-0 bg-white/90 backdrop-blur-md shadow-md py-3' : 'top-10 bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 bg-blue-900 text-white rounded-lg flex items-center justify-center shadow-lg">
@@ -189,7 +198,7 @@ export default function HomePage() {
           <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-2xl pt-10">
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 border border-blue-800 mb-6 backdrop-blur-sm">
               <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-              <span className="text-blue-200 font-medium text-sm">Vancouver&apos;s Premium Moving Service</span>
+              <span className="text-blue-200 font-medium text-sm">Premium Movers in Vancouver You Can Trust</span>
             </motion.div>
 
             <motion.h1 variants={fadeUp} className="font-heading text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
@@ -235,8 +244,8 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="bg-white rounded-3xl p-8 shadow-2xl text-gray-900 border border-gray-100 relative mt-10 lg:mt-0"
           >
-            <div className="absolute -top-4 -right-4 bg-red-600 text-white font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3 border-2 border-white">
-              Launch Special: 10% Off!
+            <div className="absolute -top-4 -right-2 sm:-right-4 bg-red-600 text-white font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3 border-2 border-white text-sm whitespace-nowrap">
+              10% Off For First-Time Customers
             </div>
             
             <AnimatePresence mode="wait">
