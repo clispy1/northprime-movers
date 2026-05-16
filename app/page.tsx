@@ -47,6 +47,7 @@ export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   
@@ -61,6 +62,36 @@ export default function HomePage() {
     email: '',
     phone: ''
   });
+
+  const handleQuoteSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (quoteStep < 4) {
+      setQuoteStep(quoteStep + 1);
+      return;
+    }
+    
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quoteData),
+      });
+      
+      if (response.ok) {
+        setIsFormSubmitted(true);
+      } else {
+        alert("There was a problem submitting your quote. Please try calling us instead.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("There was an error. Please try again or call us.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Parallax & Scroll Animations
   const { scrollY } = useScroll();
@@ -272,11 +303,7 @@ export default function HomePage() {
                     {quoteStep === 4 && "We'll send your free quote immediately."}
                   </p>
 
-                  <form className="space-y-4" onSubmit={(e) => { 
-                    e.preventDefault(); 
-                    if (quoteStep < 4) setQuoteStep(quoteStep + 1);
-                    else setIsFormSubmitted(true); 
-                  }}>
+                  <form className="space-y-4" onSubmit={handleQuoteSubmit}>
                     
                     {quoteStep === 1 && (
                       <div className="grid grid-cols-2 gap-3">
@@ -353,9 +380,11 @@ export default function HomePage() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             type="submit"
-                            className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-colors"
+                            disabled={isSubmitting}
+                            className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-colors"
                           >
-                            Get My Instant Quote <ArrowRight size={20} />
+                            {isSubmitting ? 'Sending...' : 'Get My Instant Quote'} 
+                            {!isSubmitting && <ArrowRight size={20} />}
                           </motion.button>
                         </div>
                       </div>
@@ -430,7 +459,7 @@ export default function HomePage() {
                 As a locally owned and operated company, we know the ins and outs of Metro Vancouver. From downtown high-rises to suburban family homes, we navigate the logistics so you don&apos;t have to.
               </p>
               <div className="grid grid-cols-2 gap-4">
-                {['Vancouver', 'Surrey', 'Burnaby', 'Richmond', 'Coquitlam', 'Langley'].map((city) => (
+                {['Vancouver', 'Surrey', 'Burnaby', 'Richmond', 'Coquitlam', 'Langley', 'Delta', 'Maple Ridge', 'New Westminster', 'North Vancouver', 'West Vancouver', 'Port Coquitlam', 'Pitt Meadows', 'White Rock'].map((city) => (
                   <div key={city} className="flex items-center gap-2 text-blue-900 font-medium">
                     <MapPin size={18} className="text-red-600" /> {city}
                   </div>
@@ -697,7 +726,7 @@ export default function HomePage() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={20} className="text-red-500 shrink-0 mt-0.5" />
-                <span>1234 Moving Way<br/>Vancouver, BC V6B 1A1</span>
+                <span>5960 142 Street<br/>Surrey, BC V3X 1C8</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock size={20} className="text-red-500 shrink-0 mt-0.5" />
