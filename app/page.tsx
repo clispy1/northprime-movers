@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { 
   Phone, Truck, ShieldCheck, MapPin, Star, CheckCircle, 
   ArrowRight, Menu, X, ChevronDown, ThumbsUp, 
@@ -50,6 +51,30 @@ export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [activePromiseTab, setActivePromiseTab] = useState(0);
+
+  const promiseGallery = [
+    {
+      title: "Masterful Truck Loading",
+      desc: "Our secure, ceiling-high loading technique prevents item shifts and protects every piece of furniture during transport.",
+      img: "/images/truck-packed.jpeg",
+    },
+    {
+      title: "Heavy Appliance Handling",
+      desc: "Trained operators coordinate safe team lifting and secure strap tie-downs for washing machines, fridges, and heavy gear.",
+      img: "/images/truck-inner.jpeg",
+    },
+    {
+      title: "Pristine Household Prep",
+      desc: "Every step is planned with care, arranging packed boxes systematically inside clean, spacious, client-ready rooms.",
+      img: "/images/room.jpeg",
+    },
+    {
+      title: "Meticulous Item Wrapping",
+      desc: "We apply heavy-duty stretch film and bubble wrap over delicate objects to deflect scratches, dust, and moisture.",
+      img: "/images/packed.jpeg",
+    }
+  ];
   
   // Multi-step quote form state
   const [quoteStep, setQuoteStep] = useState(1);
@@ -161,12 +186,16 @@ export default function HomePage() {
       <nav className={`fixed left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'top-0 bg-white/90 backdrop-blur-md shadow-md py-3' : 'top-10 bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-blue-900 text-white rounded-lg flex items-center justify-center shadow-lg">
-              <Truck size={24} />
+            <div className="relative w-48 h-12 flex items-center">
+              {/* Replace with your logo image. Placeholder for now. Drop your logo in public/images/logo.png on Vercel */}
+              <Image 
+                src="/images/logo.png" 
+                alt="NorthPrime Movers Logo" 
+                fill 
+                className="object-contain object-left" 
+                priority
+              />
             </div>
-            <span className={`font-heading font-extrabold text-2xl tracking-tight ${isScrolled ? 'text-blue-950' : 'text-white'}`}>
-              NorthPrime <span className="text-red-600">Movers</span>
-            </span>
           </div>
 
           <div className={`hidden md:flex items-center gap-8 font-medium ${isScrolled ? 'text-gray-600' : 'text-gray-200'}`}>
@@ -221,7 +250,7 @@ export default function HomePage() {
       <section className="relative bg-blue-950 text-white pt-32 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
         <motion.div 
           style={{ y: heroBgY, opacity: heroBgOpacity }} 
-          className="absolute inset-0 bg-[url('https://storage.googleapis.com/aistudio-user-assets/sandybarret58%40gmail.com/1743070632313_truck.jpg')] bg-cover bg-center mix-blend-overlay"
+          className="absolute inset-0 bg-[url('/images/hero-truck.png')] bg-cover bg-center mix-blend-overlay"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/95 to-blue-900/60"></div>
 
@@ -428,9 +457,9 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: MapPin, title: "Local Moving", desc: "Expert local moving services in Vancouver, Surrey, Burnaby, and surrounding areas." },
-              { icon: Truck, title: "Long Distance", desc: "Reliable long-distance moving to Kelowna, Kamloops, Alberta, and across Canada." },
-              { icon: Box, title: "Packing & Loading", desc: "Professional packing and loading services to ensure your items are safe." }
+              { icon: MapPin, title: "Local Moving", desc: "Expert local moving services in Vancouver, Surrey, Burnaby, and surrounding areas.", img: "/images/humans.jpeg", alt: "Local movers carrying boxes" },
+              { icon: Truck, title: "Long Distance", desc: "Reliable long-distance moving to Kelowna, Kamloops, Alberta, and across Canada.", img: "/images/truck-packed.jpeg", alt: "Long distance moving truck packed securely" },
+              { icon: Box, title: "Packing & Loading", desc: "Professional packing and loading services to ensure your items are safe.", img: "/images/packed.jpeg", alt: "Meticulously packed items and protective wrap" }
             ].map((service, i) => (
               <motion.div
                 key={i}
@@ -438,11 +467,16 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+                className="overflow-hidden bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col"
               >
-                <div className="mb-6"><TwoToneIcon icon={service.icon} /></div>
-                <h3 className="text-2xl font-bold mb-4 text-blue-950">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.desc}</p>
+                <div className="relative h-56 w-full bg-gray-100 flex-shrink-0">
+                  <Image src={service.img} alt={service.alt} fill className="object-cover" />
+                </div>
+                <div className="p-8 flex-1">
+                  <div className="mb-6"><TwoToneIcon icon={service.icon} /></div>
+                  <h3 className="text-2xl font-bold mb-4 text-blue-950">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{service.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -568,10 +602,42 @@ export default function HomePage() {
                   ))}
                 </ul>
               </div>
-              <div className="relative h-[400px] rounded-3xl overflow-hidden shadow-xl">
-                <img src="https://storage.googleapis.com/aistudio-user-assets/sandybarret58%40gmail.com/1743070632313_truck.jpg" alt="Premium Moving Truck" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/80 to-transparent flex items-end p-8">
-                  <p className="text-white font-bold text-xl">Our fleet is ready for your move.</p>
+              <div className="flex flex-col gap-4">
+                <div className="relative h-[340px] rounded-3xl overflow-hidden shadow-xl bg-gray-100">
+                  <Image 
+                    src={promiseGallery[activePromiseTab].img} 
+                    alt={promiseGallery[activePromiseTab].title} 
+                    fill
+                    className="object-cover transition-all duration-500 ease-in-out" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/20 to-transparent flex items-end p-6 select-none">
+                    <div className="text-left">
+                      <h4 className="text-white font-bold text-lg">{promiseGallery[activePromiseTab].title}</h4>
+                      <p className="text-blue-100/90 text-sm mt-1">{promiseGallery[activePromiseTab].desc}</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Custom Interactive Tabs / Thumbnails */}
+                <div className="grid grid-cols-4 gap-2">
+                  {promiseGallery.map((item, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActivePromiseTab(index)}
+                      className={`relative h-16 rounded-xl overflow-hidden border-2 transition-all ${
+                        activePromiseTab === index 
+                          ? 'border-red-600 scale-[1.03] shadow-md z-10' 
+                          : 'border-transparent opacity-60 hover:opacity-100'
+                      }`}
+                      title={item.title}
+                    >
+                      <Image 
+                        src={item.img} 
+                        alt={item.title} 
+                        fill
+                        className="object-cover pointer-events-none"
+                      />
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
