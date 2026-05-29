@@ -192,8 +192,10 @@ export default function HomePage() {
                 src="/images/logo.png" 
                 alt="NorthPrime Movers Logo" 
                 fill 
+                sizes="(max-width: 768px) 200px, 200px"
                 className="object-contain object-left" 
                 priority
+                referrerPolicy="no-referrer"
               />
             </div>
           </div>
@@ -470,7 +472,7 @@ export default function HomePage() {
                 className="overflow-hidden bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col"
               >
                 <div className="relative h-56 w-full bg-gray-100 flex-shrink-0">
-                  <Image src={service.img} alt={service.alt} fill className="object-cover" />
+                  <Image src={service.img} alt={service.alt} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div className="p-8 flex-1">
                   <div className="mb-6"><TwoToneIcon icon={service.icon} /></div>
@@ -608,7 +610,9 @@ export default function HomePage() {
                     src={promiseGallery[activePromiseTab].img} 
                     alt={promiseGallery[activePromiseTab].title} 
                     fill
-                    className="object-cover transition-all duration-500 ease-in-out" 
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-all duration-500 ease-in-out"
+                    referrerPolicy="no-referrer" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/20 to-transparent flex items-end p-6 select-none">
                     <div className="text-left">
@@ -634,7 +638,9 @@ export default function HomePage() {
                         src={item.img} 
                         alt={item.title} 
                         fill
+                        sizes="100px"
                         className="object-cover pointer-events-none"
+                        referrerPolicy="no-referrer"
                       />
                     </button>
                   ))}
