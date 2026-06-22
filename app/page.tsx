@@ -784,8 +784,8 @@ export default function HomePage() {
             </p>
             <div className="flex gap-4">
               {/* Social placeholders */}
-              <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-blue-800 cursor-pointer transition-colors">FB</div>
-              <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-blue-800 cursor-pointer transition-colors">IG</div>
+              <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-blue-800 cursor-pointer transition-colors"><a href="https://www.facebook.com/profile.php?id=61588982723029">FB</a></div>
+              <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-blue-800 cursor-pointer transition-colors"><a href="https://www.instagram.com/northprimemovers.ca/">IG</a></div>
             </div>
           </div>
           
