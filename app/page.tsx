@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+
 import {
   Phone,
   Truck,
@@ -36,6 +36,7 @@ import {
   useInView,
   animate,
 } from "motion/react";
+import Image from "next/image";
 
 // --- Helper Components ---
 
