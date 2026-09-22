@@ -19,7 +19,7 @@ import {
   Clock,
   Shield,
   Map as MapIcon,
-  Zap,
+  Headphones,
   MessageCircle,
   Home,
   Building2,
@@ -41,6 +41,18 @@ const ServiceIcon = ({ icon: Icon }: { icon: LucideIcon }) => (
   </div>
 );
 
+const WaveDivider = ({ className = "" }: { className?: string }) => (
+  <div className={`w-full overflow-hidden leading-none ${className}`}>
+    <svg
+      viewBox="0 0 1440 100"
+      className="w-full h-14 md:h-20 fill-current"
+      preserveAspectRatio="none"
+    >
+      <path d="M0,40 C240,100 480,0 720,40 C960,80 1200,20 1440,60 L1440,100 L0,100 Z" />
+    </svg>
+  </div>
+);
+
 // --- Main Page Component ---
 
 export default function HomePage() {
@@ -49,30 +61,7 @@ export default function HomePage() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [activePromiseTab, setActivePromiseTab] = useState(0);
-
-  const promiseGallery = [
-    {
-      title: "Masterful Truck Loading",
-      desc: "Our secure, ceiling-high loading technique prevents item shifts and protects every piece of furniture during transport.",
-      img: "/images/truck-packed.jpeg",
-    },
-    {
-      title: "Heavy Appliance Handling",
-      desc: "Trained operators coordinate safe team lifting and secure strap tie-downs for washing machines, fridges, and heavy gear.",
-      img: "/images/truck-inner.jpeg",
-    },
-    {
-      title: "Pristine Household Prep",
-      desc: "Every step is planned with care, arranging packed boxes systematically inside clean, spacious, client-ready rooms.",
-      img: "/images/room.jpeg",
-    },
-    {
-      title: "Meticulous Item Wrapping",
-      desc: "We apply heavy-duty stretch film and bubble wrap over delicate objects to deflect scratches, dust, and moisture.",
-      img: "/images/packed.jpeg",
-    },
-  ];
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   // Multi-step quote form state
   const [quoteStep, setQuoteStep] = useState(1);
@@ -118,10 +107,8 @@ export default function HomePage() {
     }
   };
 
-  // Parallax hero background
   const { scrollY } = useScroll();
-  const heroBgY = useTransform(scrollY, [0, 1000], [0, 300]);
-  const heroBgOpacity = useTransform(scrollY, [0, 500], [0.25, 0]);
+  const heroBgOpacity = useTransform(scrollY, [0, 400], [1, 0.4]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -166,7 +153,7 @@ export default function HomePage() {
     },
   ];
 
-  const heroTrustPoints = [
+  const standardPoints = [
     { icon: ShieldCheck, label: "100% Satisfaction" },
     { icon: Shield, label: "Insured & Bonded" },
     { icon: CheckCircle, label: "Licensed Crew" },
@@ -196,15 +183,15 @@ export default function HomePage() {
       icon: MapPin,
       title: "Local Moving",
       desc: "Expert local moving services in Vancouver, Surrey, Burnaby, and surrounding areas.",
-      img: "/images/humans.jpeg",
+      img: "/images/service-local.jpg",
       alt: "Local movers carrying boxes",
     },
     {
       icon: Truck,
       title: "Long Distance",
       desc: "Reliable long-distance moving to Kelowna, Kamloops, Alberta, and across Canada.",
-      img: "/images/truck-packed.jpeg",
-      alt: "Long distance moving truck packed securely",
+      img: "/images/service-long-distance.jpg",
+      alt: "Long distance moving truck on the highway",
     },
     {
       icon: Box,
@@ -214,20 +201,6 @@ export default function HomePage() {
       alt: "Meticulously packed items and protective wrap",
     },
   ];
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const },
-    },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-  };
 
   const quoteFormCard = (
     <AnimatePresence mode="wait">
@@ -509,7 +482,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-gray-50 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-3" : "bg-transparent py-5"}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md ${isScrolled ? "shadow-md py-3" : "py-5"}`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -526,9 +499,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div
-            className={`hidden md:flex items-center gap-8 font-medium ${isScrolled ? "text-gray-600" : "text-gray-200"}`}
-          >
+          <div className="hidden md:flex items-center gap-8 font-medium text-gray-600">
             <a href="#services" className="hover:text-red-600 transition-colors">
               Services
             </a>
@@ -549,7 +520,7 @@ export default function HomePage() {
           <div className="hidden md:flex items-center gap-3">
             <a
               href="tel:+16044426622"
-              className={`font-bold flex items-center gap-2 transition-colors ${isScrolled ? "text-blue-950" : "text-white"}`}
+              className="font-bold flex items-center gap-2 text-blue-950 transition-colors"
             >
               <Phone size={18} /> 604-442-6622
             </a>
@@ -564,7 +535,7 @@ export default function HomePage() {
           </div>
 
           <button
-            className={`md:hidden p-2 ${isScrolled ? "text-gray-900" : "text-white"}`}
+            className="md:hidden p-2 text-gray-900"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -605,82 +576,125 @@ export default function HomePage() {
         </AnimatePresence>
       </nav>
 
-      {/* Hero Section: full-bleed photo, centered content */}
-      <section className="relative bg-blue-950 text-white pt-36 pb-24 px-6 overflow-hidden min-h-[85vh] flex items-center">
-        <motion.div
-          style={{ y: heroBgY, opacity: heroBgOpacity }}
-          className="absolute inset-0 bg-[url('/images/hero-truck.png')] bg-cover bg-center mix-blend-overlay"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950 via-blue-950/85 to-blue-950"></div>
-
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="relative max-w-3xl mx-auto text-center"
+      {/* Hero Section: bold headline, framed photo, quote-teaser card */}
+      <section className="relative bg-gray-50 pt-32 pb-16 px-6 overflow-hidden">
+        {/* Decorative background wave lines */}
+        <motion.svg
+          style={{ opacity: heroBgOpacity }}
+          className="absolute inset-0 w-full h-full text-blue-100"
+          viewBox="0 0 800 600"
+          preserveAspectRatio="none"
         >
+          <path
+            d="M-50,200 C150,100 350,300 550,180 C650,120 750,200 850,150"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
+          <path
+            d="M-50,350 C150,280 350,450 550,320 C650,260 750,340 850,300"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
+          <path
+            d="M-50,480 C150,420 350,560 550,450 C650,400 750,470 850,430"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+          />
+        </motion.svg>
+
+        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 border border-blue-800 mb-6 backdrop-blur-sm"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-            <span className="text-blue-200 font-medium text-sm">
-              10% off for first-time customers
-            </span>
-          </motion.div>
-
-          <motion.h1
-            variants={fadeUp}
-            className="font-heading text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight"
-          >
-            A Fresh Start <br />
-            <span className="text-red-500">Deserves a Flawless Move.</span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-xl md:text-2xl mb-10 text-blue-100 leading-relaxed font-light max-w-2xl mx-auto"
-          >
-            Premium trucks, pristine equipment, and a team dedicated to
-            earning your 5-star review.
-          </motion.p>
-
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#quote"
-              className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 shadow-lg transition-colors"
-            >
-              Get My Free Quote <ArrowRight size={20} />
-            </motion.a>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="tel:+16044426622"
-              className="bg-blue-900/60 border border-blue-800 hover:bg-blue-900 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 backdrop-blur-sm transition-colors"
-            >
-              <Phone size={20} /> 604-442-6622
-            </motion.a>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="mt-14 flex flex-wrap justify-center gap-x-10 gap-y-4"
-          >
-            {heroTrustPoints.map((point, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 text-blue-100 font-medium"
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-1 bg-red-600 rounded-full"></div>
+              <span className="text-red-600 font-bold tracking-wide uppercase text-sm">
+                Fast and Secure Move
+              </span>
+            </div>
+            <h1 className="font-heading uppercase text-5xl md:text-6xl font-black mb-6 tracking-tight leading-[1.05] text-blue-950">
+              Moving Was
+              <br />
+              Never <span className="text-red-600">So Easy</span>
+            </h1>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-md">
+              Premium trucks, pristine equipment, and a team dedicated to
+              earning your 5-star review across the Lower Mainland.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="#quote"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 shadow-lg transition-colors"
               >
-                <point.icon size={20} className="text-red-500" />
-                {point.label}
-              </div>
-            ))}
+                Get My Free Quote <ArrowRight size={20} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                href="tel:+16044426622"
+                className="bg-white border-2 border-blue-950 text-blue-950 font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 transition-colors"
+              >
+                <Phone size={20} /> Call Now
+              </motion.a>
+            </div>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="relative h-72 md:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-gray-100"
+          >
+            <Image
+              src="/images/humans.jpeg"
+              alt="NorthPrime Movers crew carrying boxes"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+        </div>
+
+        {/* Quote teaser card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="relative max-w-7xl mx-auto mt-12 bg-red-600 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-xl"
+        >
+          <div className="flex items-center gap-4 flex-1">
+            <div className="w-14 h-14 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+              <Headphones className="text-white" size={26} />
+            </div>
+            <div>
+              <p className="text-red-100 font-medium text-sm uppercase tracking-wide">
+                Get a Free Quote!
+              </p>
+              <p className="text-white font-heading text-2xl font-bold">
+                604-442-6622
+              </p>
+            </div>
+          </div>
+          <p className="text-red-50 flex-1 text-center md:text-left">
+            No hidden fees, no surprises &mdash; just a fast, honest quote
+            from a licensed and insured local crew.
+          </p>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="#quote"
+            className="bg-blue-950 hover:bg-blue-900 text-white font-bold py-3.5 px-8 rounded-xl flex items-center justify-center gap-2 shrink-0 transition-colors"
+          >
+            Free Quote <ArrowRight size={18} />
+          </motion.a>
         </motion.div>
       </section>
 
@@ -742,25 +756,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section: bento layout */}
+      {/* Services Section: 2x2 grid */}
       <section id="services" className="py-24 px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_1.4fr] gap-12 items-start">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
           >
-            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-blue-950">
-              Moving Services Tailored to You
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-1 bg-red-600 rounded-full"></div>
+              <span className="text-red-600 font-bold tracking-wide uppercase text-sm">
+                Services
+              </span>
+            </div>
+            <h2 className="font-heading text-4xl font-bold mb-6 text-blue-950">
+              Precise and Hard Working
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               Whether you&apos;re moving across the street or across the
-              province, we have you covered.
+              province, we have you covered with a service built around your
+              needs.
             </p>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#quote"
+              className="inline-flex bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-8 rounded-xl items-center gap-2 transition-colors"
+            >
+              Get a Quote <ArrowRight size={18} />
+            </motion.a>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-4">
             {services.map((service, i) => (
               <motion.div
                 key={i}
@@ -768,130 +796,154 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className={`group overflow-hidden bg-white border border-gray-100 rounded-3xl shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col md:flex-row ${i === 0 ? "md:col-span-2" : ""}`}
+                className="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
-                <div
-                  className={`relative w-full flex-shrink-0 bg-gray-100 ${i === 0 ? "h-64 md:h-auto md:w-1/2" : "h-56 md:w-2/5"}`}
-                >
-                  <Image
-                    src={service.img}
-                    alt={service.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="p-8 flex-1 flex flex-col justify-center">
-                  <div className="mb-6">
-                    <ServiceIcon icon={service.icon} />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-blue-950">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">{service.desc}</p>
-                </div>
+                <ServiceIcon icon={service.icon} />
+                <h3 className="text-lg font-bold mt-4 mb-2 text-blue-950">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {service.desc}
+                </p>
               </motion.div>
             ))}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="relative rounded-2xl overflow-hidden shadow-sm min-h-[160px]"
+            >
+              <Image
+                src="/images/truck-inner.jpeg"
+                alt="Team loading a moving truck"
+                fill
+                sizes="25vw"
+                className="object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Our Promise / Fleet Section (image-led) */}
-      <section id="fleet" className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gray-50 rounded-3xl p-8 md:p-16 shadow-2xl border border-gray-100 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="flex flex-col gap-4 order-2 lg:order-1">
-                <div className="relative h-[340px] rounded-3xl overflow-hidden shadow-xl bg-gray-100">
-                  <Image
-                    src={promiseGallery[activePromiseTab].img}
-                    alt={promiseGallery[activePromiseTab].title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-all duration-500 ease-in-out"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/20 to-transparent flex items-end p-6 select-none">
-                    <div className="text-left">
-                      <h4 className="text-white font-bold text-lg">
-                        {promiseGallery[activePromiseTab].title}
-                      </h4>
-                      <p className="text-blue-100/90 text-sm mt-1">
-                        {promiseGallery[activePromiseTab].desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-4 gap-2">
-                  {promiseGallery.map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActivePromiseTab(index)}
-                      className={`relative h-16 rounded-xl overflow-hidden border-2 transition-all ${
-                        activePromiseTab === index
-                          ? "border-red-600 scale-[1.03] shadow-md z-10"
-                          : "border-transparent opacity-60 hover:opacity-100"
-                      }`}
-                      title={item.title}
-                    >
-                      <Image
-                        src={item.img}
-                        alt={item.title}
-                        fill
-                        sizes="100px"
-                        className="object-cover pointer-events-none"
-                        referrerPolicy="no-referrer"
-                      />
-                    </button>
-                  ))}
-                </div>
+      {/* The NorthPrime Standard */}
+      <section className="py-16 px-6 bg-white border-y border-gray-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 gap-4"
+          >
+            {standardPoints.map((point, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 bg-blue-950 rounded-2xl px-5 py-4"
+              >
+                <point.icon className="text-red-500 shrink-0" size={22} />
+                <span className="text-white font-bold text-sm md:text-base">
+                  {point.label}
+                </span>
               </div>
-              <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 font-bold text-sm mb-6">
-                  <Zap size={16} /> The NorthPrime Advantage
-                </div>
-                <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-blue-950">
-                  Premium Service.
-                  <br />
-                  Pristine Equipment.
-                </h2>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  We believe in doing things right, which means we never rely
-                  on old, broken-down trucks or dirty moving pads. We invest
-                  heavily in state-of-the-art equipment to ensure your
-                  belongings are treated with the utmost respect and care.
-                </p>
-                <ul className="space-y-4">
-                  {[
-                    "Premium, fully-equipped moving trucks",
-                    "Fresh, clean moving blankets for every job",
-                    "Modern dollies and lifting straps",
-                    "Highly motivated crew eager to earn your 5-star review",
-                  ].map((point, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-gray-700 font-medium"
-                    >
-                      <CheckCircle
-                        className="text-red-600 shrink-0 mt-0.5"
-                        size={20}
-                      />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            ))}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-1 bg-red-600 rounded-full"></div>
+              <span className="text-red-600 font-bold tracking-wide uppercase text-sm">
+                The NorthPrime Standard
+              </span>
             </div>
-          </div>
+            <h2 className="font-heading text-3xl font-bold mb-4 text-blue-950">
+              What Every Move Includes
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              No matter the size of your move, every NorthPrime job comes
+              with the same promise: transparent pricing, licensed and
+              insured crews, and a team that treats your belongings like
+              their own.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Our Promise / Fleet Section */}
+      <section id="fleet" className="py-24 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative h-80 lg:h-[420px] rounded-3xl overflow-hidden shadow-xl"
+          >
+            <Image
+              src="/images/room.jpeg"
+              alt="Neatly packed and organized moving boxes"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-1 bg-red-600 rounded-full"></div>
+              <span className="text-red-600 font-bold tracking-wide uppercase text-sm">
+                Why Us
+              </span>
+            </div>
+            <h2 className="font-heading text-4xl font-bold mb-6 text-blue-950">
+              Premium Service. Pristine Equipment.
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              We believe in doing things right, which means we never rely on
+              old, broken-down trucks or dirty moving pads. We invest heavily
+              in state-of-the-art equipment to ensure your belongings are
+              treated with the utmost respect and care.
+            </p>
+            <ul className="space-y-4 mb-8">
+              {[
+                "Premium, fully-equipped moving trucks",
+                "Fresh, clean moving blankets for every job",
+                "Modern dollies and lifting straps",
+                "Highly motivated crew eager to earn your 5-star review",
+              ].map((point, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 text-gray-700 font-medium"
+                >
+                  <CheckCircle
+                    className="text-red-600 shrink-0 mt-0.5"
+                    size={20}
+                  />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#quote"
+              className="inline-flex bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-8 rounded-xl items-center gap-2 transition-colors"
+            >
+              Get My Free Quote <ArrowRight size={18} />
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
       {/* Service Area Visuals */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <motion.div
@@ -1021,9 +1073,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials: static grid */}
+      {/* Testimonials: single card with dot navigation */}
       <section id="reviews" className="py-24 px-6 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1039,30 +1091,48 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t, i) => (
-              <motion.div
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTestimonial}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 relative text-center"
+            >
+              <Quote className="text-blue-100 w-12 h-12 mx-auto mb-6" />
+              <div className="flex justify-center text-yellow-400 mb-6">
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} size={18} fill="currentColor" />
+                ))}
+              </div>
+              <p className="text-xl text-gray-800 leading-relaxed mb-8 italic">
+                &quot;{testimonials[activeTestimonial].text}&quot;
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-blue-950 text-white font-bold flex items-center justify-center">
+                  {testimonials[activeTestimonial].name.charAt(0)}
+                </div>
+                <div className="text-left">
+                  <p className="font-bold text-blue-950">
+                    {testimonials[activeTestimonial].name}
+                  </p>
+                  <p className="text-gray-500 text-sm">
+                    {testimonials[activeTestimonial].role}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex justify-center gap-2 mt-8">
+            {testimonials.map((_, i) => (
+              <button
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-gray-50 rounded-3xl p-8 border border-gray-100 relative flex flex-col"
-              >
-                <Quote className="text-blue-100 w-10 h-10 mb-4" />
-                <div className="flex text-yellow-400 mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} size={16} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-gray-800 leading-relaxed mb-6 flex-1">
-                  &quot;{t.text}&quot;
-                </p>
-                <div>
-                  <p className="font-bold text-blue-950">{t.name}</p>
-                  <p className="text-gray-500 text-sm">{t.role}</p>
-                </div>
-              </motion.div>
+                onClick={() => setActiveTestimonial(i)}
+                aria-label={`Show testimonial ${i + 1}`}
+                className={`h-2.5 rounded-full transition-all ${activeTestimonial === i ? "w-8 bg-red-600" : "w-2.5 bg-gray-200 hover:bg-gray-300"}`}
+              />
             ))}
           </div>
         </div>
@@ -1125,8 +1195,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Wave transition into closing CTA */}
+      <div className="bg-gray-50 text-blue-950">
+        <WaveDivider />
+      </div>
+
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-blue-950 text-white text-center relative overflow-hidden">
+      <section className="pb-24 pt-4 px-6 bg-blue-950 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/truck-packed.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
