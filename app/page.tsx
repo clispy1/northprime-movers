@@ -482,7 +482,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-gray-50 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md ${isScrolled ? "shadow-md py-3" : "py-5"}`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${isScrolled ? "shadow-md py-3" : "py-5"}`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -788,7 +788,7 @@ export default function HomePage() {
             </motion.a>
           </motion.div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {services.map((service, i) => (
               <motion.div
                 key={i}
@@ -812,13 +812,13 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="relative rounded-2xl overflow-hidden shadow-sm min-h-[160px]"
+              className="relative rounded-2xl overflow-hidden shadow-sm h-40 sm:h-auto sm:min-h-[160px]"
             >
               <Image
                 src="/images/truck-inner.jpeg"
                 alt="Team loading a moving truck"
                 fill
-                sizes="25vw"
+                sizes="(max-width: 640px) 100vw, 25vw"
                 className="object-cover"
                 referrerPolicy="no-referrer"
               />
