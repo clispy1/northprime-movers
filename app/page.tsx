@@ -81,10 +81,10 @@ const AnimatedCounter = ({
 };
 
 const ServiceIcon = ({ icon: Icon }: { icon: LucideIcon }) => (
-  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-stone-100 group-hover:bg-amber-100 transition-colors duration-300">
+  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-100 group-hover:bg-red-100 transition-colors duration-300">
     <Icon
       size={26}
-      className="text-stone-700 group-hover:text-amber-700 transition-colors duration-300"
+      className="text-blue-800 group-hover:text-red-700 transition-colors duration-300"
     />
   </div>
 );
@@ -252,10 +252,10 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 font-sans selection:bg-amber-200 selection:text-amber-900 overflow-x-hidden">
+    <main className="min-h-screen bg-gray-50 font-sans selection:bg-red-200 selection:text-red-900 overflow-x-hidden">
       {/* Top Discount Banner */}
       <div
-        className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-300 ${isScrolled ? "-translate-y-full" : "translate-y-0"} bg-amber-600 text-white text-center py-2 px-4 shadow-sm`}
+        className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-300 ${isScrolled ? "-translate-y-full" : "translate-y-0"} bg-red-600 text-white text-center py-2 px-4 shadow-sm`}
       >
         <div className="font-bold text-sm sm:text-base flex items-center justify-center gap-2 tracking-wide">
           <Star size={16} className="fill-yellow-400 text-yellow-400" />
@@ -289,20 +289,20 @@ export default function HomePage() {
           >
             <a
               href="#services"
-              className="hover:text-amber-600 transition-colors"
+              className="hover:text-red-600 transition-colors"
             >
               Services
             </a>
             <a
               href="#how-it-works"
-              className="hover:text-amber-600 transition-colors"
+              className="hover:text-red-600 transition-colors"
             >
               How it Works
             </a>
-            <a href="#fleet" className="hover:text-amber-600 transition-colors">
+            <a href="#fleet" className="hover:text-red-600 transition-colors">
               Our Promise
             </a>
-            <a href="#reviews" className="hover:text-amber-600 transition-colors">
+            <a href="#reviews" className="hover:text-red-600 transition-colors">
               Reviews
             </a>
           </div>
@@ -312,7 +312,7 @@ export default function HomePage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="tel:+16044426622"
-              className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 px-6 rounded-full flex items-center gap-2 shadow-md transition-colors"
+              className="bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 px-6 rounded-full flex items-center gap-2 shadow-md transition-colors"
             >
               <Phone size={18} /> 604-442-6622
             </motion.a>
@@ -352,7 +352,7 @@ export default function HomePage() {
                 </a>
                 <a
                   href="tel:+16044426622"
-                  className="bg-amber-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mt-2"
+                  className="bg-red-600 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 mt-2"
                 >
                   <Phone size={18} /> Call Now
                 </a>
@@ -363,12 +363,12 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section (Parallax) */}
-      <section className="relative bg-stone-950 text-white pt-32 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative bg-blue-950 text-white pt-32 pb-20 px-6 overflow-hidden min-h-[90vh] flex items-center">
         <motion.div
           style={{ y: heroBgY, opacity: heroBgOpacity }}
           className="absolute inset-0 bg-[url('/images/hero-truck.png')] bg-cover bg-center mix-blend-overlay"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/65 to-stone-800/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/65 to-blue-900/30"></div>
 
         <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
           <motion.div
@@ -379,10 +379,10 @@ export default function HomePage() {
           >
             <motion.div
               variants={fadeUp}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-stone-800/50 border border-stone-700 mb-6 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 border border-blue-800 mb-6 backdrop-blur-sm"
             >
-              <span className="flex h-2 w-2 rounded-full bg-amber-500 animate-pulse"></span>
-              <span className="text-stone-300 font-medium text-sm">
+              <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+              <span className="text-blue-200 font-medium text-sm">
                 Premium Movers in Vancouver You Can Trust
               </span>
             </motion.div>
@@ -392,12 +392,12 @@ export default function HomePage() {
               className="font-heading text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight"
             >
               A Fresh Start <br />
-              <span className="text-amber-500">Deserves a Flawless Move.</span>
+              <span className="text-red-500">Deserves a Flawless Move.</span>
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
-              className="text-xl md:text-2xl mb-8 text-stone-100 leading-relaxed font-light"
+              className="text-xl md:text-2xl mb-8 text-blue-100 leading-relaxed font-light"
             >
               Premium trucks, pristine equipment, and a team dedicated to
               earning your 5-star review.
@@ -411,7 +411,7 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href="tel:+16044426622"
-                className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 shadow-lg transition-colors"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 shadow-lg transition-colors"
               >
                 <Phone size={20} /> 604-442-6622
               </motion.a>
@@ -419,7 +419,7 @@ export default function HomePage() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm text-stone-300"
+              className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm text-blue-200"
             >
               <div className="flex flex-col gap-1">
                 <span className="text-2xl font-bold text-white">
@@ -449,7 +449,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="bg-white rounded-3xl p-8 shadow-2xl text-gray-900 border border-gray-100 relative mt-10 lg:mt-0"
           >
-            <div className="absolute -top-4 -right-2 sm:-right-4 bg-amber-600 text-white font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3 border-2 border-white text-sm whitespace-nowrap">
+            <div className="absolute -top-4 -right-2 sm:-right-4 bg-red-600 text-white font-bold px-4 py-1.5 rounded-full shadow-lg transform rotate-3 border-2 border-white text-sm whitespace-nowrap">
               10% Off For First-Time Customers
             </div>
 
@@ -467,12 +467,12 @@ export default function HomePage() {
                     {[1, 2, 3, 4].map((step) => (
                       <div
                         key={step}
-                        className={`h-2 flex-1 rounded-full ${step <= quoteStep ? "bg-amber-600" : "bg-gray-100"}`}
+                        className={`h-2 flex-1 rounded-full ${step <= quoteStep ? "bg-red-600" : "bg-gray-100"}`}
                       />
                     ))}
                   </div>
 
-                  <h3 className="text-3xl font-bold mb-2 font-heading text-stone-950">
+                  <h3 className="text-3xl font-bold mb-2 font-heading text-blue-950">
                     {quoteStep === 1 && "What are you moving?"}
                     {quoteStep === 2 && "Where are you moving?"}
                     {quoteStep === 3 && "When are you moving?"}
@@ -506,13 +506,13 @@ export default function HomePage() {
                               setQuoteData({ ...quoteData, moveSize: size.id });
                               setQuoteStep(2);
                             }}
-                            className={`p-4 rounded-xl border-2 cursor-pointer flex flex-col items-center gap-2 text-center transition-all ${quoteData.moveSize === size.id ? "border-amber-600 bg-amber-50 text-amber-700" : "border-gray-100 hover:border-amber-200 hover:bg-gray-50 text-gray-600"}`}
+                            className={`p-4 rounded-xl border-2 cursor-pointer flex flex-col items-center gap-2 text-center transition-all ${quoteData.moveSize === size.id ? "border-red-600 bg-red-50 text-red-700" : "border-gray-100 hover:border-red-200 hover:bg-gray-50 text-gray-600"}`}
                           >
                             <size.icon
                               size={24}
                               className={
                                 quoteData.moveSize === size.id
-                                  ? "text-amber-600"
+                                  ? "text-red-600"
                                   : "text-gray-400"
                               }
                             />
@@ -540,7 +540,7 @@ export default function HomePage() {
                               })
                             }
                             type="text"
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-600 focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                             placeholder="e.g. Vancouver, V6B 1A1"
                           />
                         </div>
@@ -558,7 +558,7 @@ export default function HomePage() {
                               })
                             }
                             type="text"
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-600 focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                             placeholder="e.g. Surrey, V3T 1A1"
                           />
                         </div>
@@ -572,7 +572,7 @@ export default function HomePage() {
                           </button>
                           <button
                             type="submit"
-                            className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
+                            className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
                           >
                             Next <ArrowRight size={18} />
                           </button>
@@ -601,7 +601,7 @@ export default function HomePage() {
                                 })
                               }
                               type="date"
-                              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-600 focus:border-transparent outline-none transition-all"
+                              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                             />
                           </div>
                         </div>
@@ -615,7 +615,7 @@ export default function HomePage() {
                           </button>
                           <button
                             type="submit"
-                            className="flex-1 bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
+                            className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors"
                           >
                             Next <ArrowRight size={18} />
                           </button>
@@ -640,7 +640,7 @@ export default function HomePage() {
                                 })
                               }
                               type="text"
-                              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-600 focus:border-transparent outline-none transition-all"
+                              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                               placeholder="John Doe"
                             />
                           </div>
@@ -658,7 +658,7 @@ export default function HomePage() {
                                 })
                               }
                               type="tel"
-                              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-600 focus:border-transparent outline-none transition-all"
+                              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                               placeholder="604-442-6622"
                             />
                           </div>
@@ -677,7 +677,7 @@ export default function HomePage() {
                               })
                             }
                             type="email"
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-amber-600 focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                             placeholder="john@example.com"
                           />
                         </div>
@@ -694,7 +694,7 @@ export default function HomePage() {
                             whileTap={{ scale: 0.98 }}
                             type="submit"
                             disabled={isSubmitting}
-                            className="flex-1 bg-amber-600 hover:bg-amber-700 disabled:bg-amber-400 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-amber-600/30 transition-colors"
+                            className="flex-1 bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 transition-colors"
                           >
                             {isSubmitting
                               ? "Sending..."
@@ -716,7 +716,7 @@ export default function HomePage() {
                   <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
                     <CheckCircle size={40} />
                   </div>
-                  <h3 className="text-3xl font-bold mb-2 font-heading text-stone-950">
+                  <h3 className="text-3xl font-bold mb-2 font-heading text-blue-950">
                     Quote Requested!
                   </h3>
                   <p className="text-gray-600 mb-6">
@@ -725,7 +725,7 @@ export default function HomePage() {
                   </p>
                   <button
                     onClick={() => setIsFormSubmitted(false)}
-                    className="text-amber-600 font-medium hover:underline"
+                    className="text-blue-600 font-medium hover:underline"
                   >
                     Submit another request
                   </button>
@@ -740,16 +740,16 @@ export default function HomePage() {
       <div className="bg-white border-b border-gray-200 py-6 relative z-20 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center md:justify-between items-center gap-8 text-gray-600">
           <div className="flex items-center gap-2 font-bold text-lg">
-            <ShieldCheck className="text-amber-600" /> 100% Satisfaction Guarantee
+            <ShieldCheck className="text-red-600" /> 100% Satisfaction Guarantee
           </div>
           <div className="flex items-center gap-2 font-bold text-lg">
-            <Shield className="text-amber-600" /> Fully Insured & Bonded
+            <Shield className="text-blue-600" /> Fully Insured & Bonded
           </div>
           <div className="flex items-center gap-2 font-bold text-lg">
-            <CheckCircle className="text-amber-600" /> Licensed Professionals
+            <CheckCircle className="text-red-600" /> Licensed Professionals
           </div>
           <div className="flex items-center gap-2 font-bold text-lg">
-            <ThumbsUp className="text-amber-600" /> 5-Star Service Standard
+            <ThumbsUp className="text-blue-600" /> 5-Star Service Standard
           </div>
         </div>
       </div>
@@ -763,7 +763,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-stone-950">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-blue-950">
               Moving Services Tailored to You
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -818,7 +818,7 @@ export default function HomePage() {
                   <div className="mb-6">
                     <ServiceIcon icon={service.icon} />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-stone-950">
+                  <h3 className="text-2xl font-bold mb-4 text-blue-950">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -841,7 +841,7 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="w-full md:w-1/2"
             >
-              <h2 className="font-heading text-4xl font-bold mb-6 text-stone-950">
+              <h2 className="font-heading text-4xl font-bold mb-6 text-blue-950">
                 Proudly Serving the Lower Mainland
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -869,9 +869,9 @@ export default function HomePage() {
                 ].map((city) => (
                   <div
                     key={city}
-                    className="flex items-center gap-2 text-stone-800 font-medium"
+                    className="flex items-center gap-2 text-blue-900 font-medium"
                   >
-                    <MapPin size={18} className="text-amber-600" /> {city}
+                    <MapPin size={18} className="text-red-600" /> {city}
                   </div>
                 ))}
               </div>
@@ -884,13 +884,13 @@ export default function HomePage() {
             >
               <div className="space-y-4 mt-8">
                 <div className="h-48 rounded-3xl bg-[url('/images/service-local.jpg')] bg-cover bg-center shadow-lg relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-stone-800/40 group-hover:bg-stone-800/20 transition-colors"></div>
+                  <div className="absolute inset-0 bg-blue-900/40 group-hover:bg-blue-900/20 transition-colors"></div>
                   <span className="absolute bottom-4 left-4 text-white font-bold text-xl">
                     Vancouver
                   </span>
                 </div>
                 <div className="h-64 rounded-3xl bg-[url('/images/fleet-truck.jpg')] bg-cover bg-center shadow-lg relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-stone-800/40 group-hover:bg-stone-800/20 transition-colors"></div>
+                  <div className="absolute inset-0 bg-blue-900/40 group-hover:bg-blue-900/20 transition-colors"></div>
                   <span className="absolute bottom-4 left-4 text-white font-bold text-xl">
                     Burnaby
                   </span>
@@ -898,12 +898,12 @@ export default function HomePage() {
               </div>
               <div className="space-y-4">
                 <div className="h-64 rounded-3xl bg-[url('/images/service-packing.jpg')] bg-cover bg-center shadow-lg relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-stone-800/40 group-hover:bg-stone-800/20 transition-colors"></div>
+                  <div className="absolute inset-0 bg-blue-900/40 group-hover:bg-blue-900/20 transition-colors"></div>
                   <span className="absolute bottom-4 left-4 text-white font-bold text-xl">
                     Surrey
                   </span>
                 </div>
-                <div className="h-48 rounded-3xl bg-stone-50 border-2 border-dashed border-stone-300 flex items-center justify-center flex-col text-amber-600 shadow-inner">
+                <div className="h-48 rounded-3xl bg-blue-50 border-2 border-dashed border-blue-200 flex items-center justify-center flex-col text-blue-600 shadow-inner">
                   <MapIcon size={32} className="mb-2 opacity-50" />
                   <span className="font-medium px-4 text-center">
                     And everywhere in between!
@@ -918,9 +918,9 @@ export default function HomePage() {
       {/* Animated Timeline: How It Works */}
       <section
         id="how-it-works"
-        className="py-24 px-6 bg-stone-950 text-white relative overflow-hidden"
+        className="py-24 px-6 bg-blue-950 text-white relative overflow-hidden"
       >
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-stone-700/40 via-stone-950 to-stone-950"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-800/40 via-blue-950 to-blue-950"></div>
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -931,24 +931,24 @@ export default function HomePage() {
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               How It Works
             </h2>
-            <p className="text-xl text-stone-300">
+            <p className="text-xl text-blue-200">
               Three simple steps to your new home.
             </p>
           </motion.div>
 
           <div ref={timelineRef} className="relative pl-12 md:pl-0">
             {/* Desktop Center Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-stone-800 -translate-x-1/2 rounded-full"></div>
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-900 -translate-x-1/2 rounded-full"></div>
             <motion.div
               style={{ height: lineHeight }}
-              className="hidden md:block absolute left-1/2 top-0 w-1 bg-amber-600 -translate-x-1/2 rounded-full origin-top"
+              className="hidden md:block absolute left-1/2 top-0 w-1 bg-red-600 -translate-x-1/2 rounded-full origin-top"
             ></motion.div>
 
             {/* Mobile Left Line */}
-            <div className="md:hidden absolute left-4 top-0 bottom-0 w-1 bg-stone-800 rounded-full"></div>
+            <div className="md:hidden absolute left-4 top-0 bottom-0 w-1 bg-blue-900 rounded-full"></div>
             <motion.div
               style={{ height: lineHeight }}
-              className="md:hidden absolute left-4 top-0 w-1 bg-amber-600 rounded-full origin-top"
+              className="md:hidden absolute left-4 top-0 w-1 bg-red-600 rounded-full origin-top"
             ></motion.div>
 
             {[
@@ -976,7 +976,7 @@ export default function HomePage() {
                 className={`relative flex items-center justify-between md:justify-normal w-full mb-16 last:mb-0 ${item.align === "left" ? "md:flex-row-reverse" : ""}`}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-[-48px] md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-stone-950 border-4 border-amber-600 flex items-center justify-center font-bold text-lg z-10 shadow-md">
+                <div className="absolute left-[-48px] md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-blue-950 border-4 border-red-600 flex items-center justify-center font-bold text-lg z-10 shadow-md">
                   {item.step}
                 </div>
 
@@ -985,12 +985,12 @@ export default function HomePage() {
                   initial={{ opacity: 0, x: item.align === "left" ? 50 : -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
-                  className={`w-full md:w-[45%] bg-stone-800/40 backdrop-blur-sm border border-stone-700 p-8 rounded-3xl hover:bg-stone-800/60 transition-colors`}
+                  className={`w-full md:w-[45%] bg-blue-900/40 backdrop-blur-sm border border-blue-800 p-8 rounded-3xl hover:bg-blue-900/60 transition-colors`}
                 >
                   <h3 className="text-2xl font-bold mb-3 text-white">
                     {item.title}
                   </h3>
-                  <p className="text-stone-300 leading-relaxed">{item.desc}</p>
+                  <p className="text-blue-200 leading-relaxed">{item.desc}</p>
                 </motion.div>
               </div>
             ))}
@@ -1002,15 +1002,15 @@ export default function HomePage() {
       <section id="fleet" className="py-24 px-6 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="bg-white rounded-3xl p-8 md:p-16 shadow-2xl border border-gray-100 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-stone-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-red-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 text-amber-600 font-bold text-sm mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 font-bold text-sm mb-6">
                   <Zap size={16} /> The NorthPrime Advantage
                 </div>
-                <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-stone-950">
+                <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6 text-blue-950">
                   Premium Service.
                   <br />
                   Pristine Equipment.
@@ -1033,7 +1033,7 @@ export default function HomePage() {
                       className="flex items-start gap-3 text-gray-700 font-medium"
                     >
                       <CheckCircle
-                        className="text-amber-600 shrink-0 mt-0.5"
+                        className="text-red-600 shrink-0 mt-0.5"
                         size={20}
                       />
                       {point}
@@ -1051,12 +1051,12 @@ export default function HomePage() {
                     className="object-cover transition-all duration-500 ease-in-out"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent flex items-end p-6 select-none">
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/20 to-transparent flex items-end p-6 select-none">
                     <div className="text-left">
                       <h4 className="text-white font-bold text-lg">
                         {promiseGallery[activePromiseTab].title}
                       </h4>
-                      <p className="text-stone-100/90 text-sm mt-1">
+                      <p className="text-blue-100/90 text-sm mt-1">
                         {promiseGallery[activePromiseTab].desc}
                       </p>
                     </div>
@@ -1070,7 +1070,7 @@ export default function HomePage() {
                       onClick={() => setActivePromiseTab(index)}
                       className={`relative h-16 rounded-xl overflow-hidden border-2 transition-all ${
                         activePromiseTab === index
-                          ? "border-amber-600 scale-[1.03] shadow-md z-10"
+                          ? "border-red-600 scale-[1.03] shadow-md z-10"
                           : "border-transparent opacity-60 hover:opacity-100"
                       }`}
                       title={item.title}
@@ -1101,7 +1101,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-stone-950">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-blue-950">
               Early Customer Love
             </h2>
             <p className="text-xl text-gray-600">
@@ -1120,7 +1120,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="bg-gray-50 rounded-3xl p-8 md:p-16 text-center border border-gray-100 relative"
               >
-                <Quote className="absolute top-8 left-8 text-stone-100 w-24 h-24 -z-0" />
+                <Quote className="absolute top-8 left-8 text-blue-100 w-24 h-24 -z-0" />
                 <div className="relative z-10">
                   <div className="flex justify-center text-yellow-400 mb-8">
                     {[...Array(5)].map((_, i) => (
@@ -1131,7 +1131,7 @@ export default function HomePage() {
                     &quot;{testimonials[currentTestimonial].text}&quot;
                   </p>
                   <div>
-                    <p className="font-bold text-xl text-stone-950">
+                    <p className="font-bold text-xl text-blue-950">
                       {testimonials[currentTestimonial].name}
                     </p>
                     <p className="text-gray-500">
@@ -1146,13 +1146,13 @@ export default function HomePage() {
             <div className="flex justify-center gap-4 mt-8">
               <button
                 onClick={prevTestimonial}
-                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-stone-50 hover:text-amber-600 hover:border-stone-300 transition-all"
+                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={nextTestimonial}
-                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-stone-50 hover:text-amber-600 hover:border-stone-300 transition-all"
+                className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 transition-all"
               >
                 <ChevronRight size={24} />
               </button>
@@ -1170,7 +1170,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="font-heading text-4xl font-bold mb-4 text-stone-950">
+            <h2 className="font-heading text-4xl font-bold mb-4 text-blue-950">
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600">
@@ -1188,11 +1188,11 @@ export default function HomePage() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
                 >
-                  <span className="font-bold text-lg text-stone-950 pr-8">
+                  <span className="font-bold text-lg text-blue-950 pr-8">
                     {faq.q}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${openFaq === i ? "bg-stone-100 text-amber-600" : "bg-gray-50 text-gray-400"}`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${openFaq === i ? "bg-blue-100 text-blue-600" : "bg-gray-50 text-gray-400"}`}
                   >
                     <ChevronDown
                       className={`transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
@@ -1219,7 +1219,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-stone-950 text-white text-center relative overflow-hidden">
+      <section className="py-24 px-6 bg-blue-950 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/truck-packed.jpeg')] bg-cover bg-center opacity-20 mix-blend-overlay"></div>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1230,7 +1230,7 @@ export default function HomePage() {
           <h2 className="font-heading text-5xl font-bold mb-6">
             Ready for a Stress-Free Move?
           </h2>
-          <p className="text-2xl text-stone-100 mb-10">
+          <p className="text-2xl text-blue-100 mb-10">
             Get your free quote today and let us handle the heavy lifting.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -1238,7 +1238,7 @@ export default function HomePage() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="tel:+16044426622"
-              className="bg-amber-600 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 shadow-xl shadow-amber-600/30"
+              className="bg-red-600 text-white font-bold py-4 px-8 rounded-xl text-lg flex items-center justify-center gap-2 shadow-xl shadow-red-600/30"
             >
               <Phone size={20} /> Call Now: 604-442-6622
             </motion.a>
@@ -1247,30 +1247,30 @@ export default function HomePage() {
       </section>
 
       {/* Enhanced Footer */}
-      <footer className="py-16 px-6 bg-stone-950 text-stone-300 border-t border-stone-800">
+      <footer className="py-16 px-6 bg-blue-950 text-blue-200 border-t border-blue-900">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-stone-800 text-white rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-blue-900 text-white rounded-lg flex items-center justify-center">
                 <Truck size={24} />
               </div>
               <span className="font-heading font-extrabold text-2xl tracking-tight text-white">
-                NorthPrime <span className="text-amber-600">Movers</span>
+                NorthPrime <span className="text-red-600">Movers</span>
               </span>
             </div>
-            <p className="text-stone-300/80 max-w-sm mb-6 leading-relaxed">
+            <p className="text-blue-200/80 max-w-sm mb-6 leading-relaxed">
               Vancouver&apos;s premier moving service. Dedicated to providing
               stress-free, reliable, and transparent moving experiences across
               the Lower Mainland.
             </p>
             <div className="flex gap-4">
               {/* Social placeholders */}
-              <div className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 cursor-pointer transition-colors">
+              <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-blue-800 cursor-pointer transition-colors">
                 <a href="https://www.facebook.com/profile.php?id=61588982723029">
                   FB
                 </a>
               </div>
-              <div className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-stone-700 cursor-pointer transition-colors">
+              <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center hover:bg-blue-800 cursor-pointer transition-colors">
                 <a href="https://www.instagram.com/northprimemovers.ca/">IG</a>
               </div>
             </div>
@@ -1280,11 +1280,11 @@ export default function HomePage() {
             <h4 className="text-white font-bold mb-6 text-lg">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone size={20} className="text-amber-500 shrink-0 mt-0.5" />
+                <Phone size={20} className="text-red-500 shrink-0 mt-0.5" />
                 <span>604-442-6622</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-amber-500 shrink-0 mt-0.5" />
+                <MapPin size={20} className="text-red-500 shrink-0 mt-0.5" />
                 <span>
                   5960 142 Street
                   <br />
@@ -1292,7 +1292,7 @@ export default function HomePage() {
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock size={20} className="text-amber-500 shrink-0 mt-0.5" />
+                <Clock size={20} className="text-red-500 shrink-0 mt-0.5" />
                 <span>Mon-Sun: 7am - 8pm</span>
               </li>
             </ul>
@@ -1325,7 +1325,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-stone-800/50 text-center text-sm text-stone-300/50">
+        <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-blue-900/50 text-center text-sm text-blue-200/50">
           <p>
             &copy; {new Date().getFullYear()} NorthPrime Movers. All rights
             reserved.
@@ -1342,7 +1342,7 @@ export default function HomePage() {
       >
         <a
           href="tel:+16044426622"
-          className="bg-amber-600 text-white font-bold py-4 px-6 rounded-2xl text-lg flex items-center justify-center gap-2 shadow-xl border border-amber-500"
+          className="bg-red-600 text-white font-bold py-4 px-6 rounded-2xl text-lg flex items-center justify-center gap-2 shadow-xl border border-red-500"
         >
           <Phone size={20} /> Get a Free Quote
         </a>
