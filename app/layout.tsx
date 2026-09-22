@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import {Inter, Space_Grotesk} from 'next/font/google';
+import {Inter, Fraunces} from 'next/font/google';
 import './globals.css'; // Global styles
 
 const inter = Inter({
@@ -7,7 +7,7 @@ const inter = Inter({
   variable: '--font-sans',
 });
 
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-heading',
 });
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body suppressHydrationWarning className="font-sans text-gray-900">{children}</body>
     </html>
   );
